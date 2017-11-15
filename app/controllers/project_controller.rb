@@ -21,14 +21,17 @@ class ProjectController < ApplicationController
 
   post '/projects/new' do
     if logged_in?
-      if params[:name] != ""
+      if params[:name] != "" && params[:category]
         user = current_user
-        project = user.projects.build(params)
-        user.save
+        category = Category.find_or_create_by(name: params[:category])
+        project = user.projects.build(params[:project])
+        project.category = category
         binding.pry
+        user.save
+
         redirect "/projects/#{project.id}"
       else
-        redirect '/tweets/new'
+        redirect '/projects/new'
       end
     else
       redirect '/login'

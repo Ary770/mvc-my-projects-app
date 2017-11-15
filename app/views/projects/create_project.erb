@@ -3,45 +3,45 @@
 <p>how exiting...</p>
 
 <form action="/projects/new" method="post">
+  <h3>Project Category:</h3>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"></span>
+    <input type="text" name="category" class="form-control" placeholder="" aria-describedby="basic-addon1">
+  </div>
+  
   <h3>Project Name:</h3 >
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="name" class="form-control" placeholder="" aria-describedby="basic-addon1">
+      <input type="text" name="project[name]" class="form-control" placeholder="" aria-describedby="basic-addon1">
     </div>
 
   <h3>Ideas:</h3>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="ideas[]" class="form-control" placeholder="...what comes to mind?" aria-describedby="basic-addon1">
+      <input type="text" name="project[ideas][]" class="form-control" placeholder="...what comes to mind?" aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="ideas[]" class="form-control" placeholder="..." aria-describedby="basic-addon1">
+      <input type="text" name="project[ideas][]" class="form-control" placeholder="..." aria-describedby="basic-addon1">
     </div>
 
     <h3>Notes:</h3>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"></span>
-        <input type="text" name="notes" class="form-control" placeholder="..." aria-describedby="basic-addon1">
+        <input type="text" name="project[notes]" class="form-control" placeholder="..." aria-describedby="basic-addon1">
       </div>
 
     <h3>Start By:</h3>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="start_by" class="form-control" placeholder="" aria-describedby="basic-addon1">
+      <input type="text" name="project[start_by]" class="form-control" placeholder="" aria-describedby="basic-addon1">
     </div>
 
     <h3>Finish By:</h3>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="finish_by" class="form-control" placeholder="" aria-describedby="basic-addon1">
-    </div>
-
-    <h3>Project Category:</h3>
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1"></span>
-      <input type="text" name="category" class="form-control" placeholder="" aria-describedby="basic-addon1">
+      <input type="text" name="project[finish_by]" class="form-control" placeholder="" aria-describedby="basic-addon1">
     </div>
 
     <p></p>

@@ -1,2 +1,29 @@
-<h1><%=@project.name%></h1>
- 
+<h1><%=@project.name%> / <% if @project.category %>
+  <%= @project.category %>
+  <% end %> </h1>
+
+  <% if @project.ideas %>
+    <h3>Ideas:</h3>
+    <% @project.ideas.each do |i| %>
+    <ul>
+      <li><%= i %></li>
+    </ul>
+    <% end %>
+  <% end %>
+
+  <p></p>
+
+  <% if @project.notes %>
+    <h3>Notes:</h3>
+    <p><%= @project.notes %></p>
+  <% end %>
+
+  <% if @project.start_by %>
+    <h3>Start By:</h3>
+    <p><%= @project.start_by %></p>
+  <% end %>
+
+  <% if @project.finish_by %>
+    <h3>Finish By:</h3>
+    <p><%= @project.finish_by %></p>
+  <% end %>
