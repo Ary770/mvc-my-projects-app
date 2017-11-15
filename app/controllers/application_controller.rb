@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
 		end
 
     def validate_signup
-      params[:username] != "" && params[:email] != ""
+      !User.find_by(username: params[:username]) && params[:username] != ""
     end
 	end
 
