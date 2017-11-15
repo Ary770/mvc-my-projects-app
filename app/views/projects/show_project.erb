@@ -1,12 +1,12 @@
-<h1><%=@project.name%> / <% if @project.category %>
-  <%= @project.category %>
+<h1><%=@project.name%> <% if @project.category %>
+  / <%= @project.category.name %>
   <% end %> </h1>
 
-  <% if @project.ideas != "" %>
+  <% if @project.ideas %>
     <h3>Ideas:</h3>
     <% @project.ideas.each do |i| %>
     <ul>
-      <li><%= i %></li>
+      <li><%= i.text %></li>
     </ul>
     <% end %>
   <% end %>
