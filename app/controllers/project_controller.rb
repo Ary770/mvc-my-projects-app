@@ -20,13 +20,15 @@ class ProjectController < ApplicationController
   end
 
   post '/projects/new' do
-    if logged_in?
+    if logged_in? && current_user
       if params[:name] != "" && params[:category]
         user = current_user
         category = Category.find_or_create_by(name: params[:category])
         project = user.projects.build(params[:project])
         project.category = category
-        binding.pry
+        params[:ideas].each do |idea|
+          project.ideas.build(text: idea)
+        end
         user.save
 
         redirect "/projects/#{project.id}"
