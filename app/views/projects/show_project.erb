@@ -30,3 +30,9 @@
     <h3>Finish By:</h3>
     <p><%= @project.finish_by %></p>
   <% end %>
+
+  <p></p>
+
+  <a href="/projects/<%=@project.id%>/edit" class="btn btn-primary" role="botton">Edit Project</a>
+
+  <a href="/projects/<%=@project.id%>/delete" class="btn btn-danger" role="botton">Delete</a>
