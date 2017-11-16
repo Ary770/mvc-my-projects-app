@@ -1,0 +1,7 @@
+<h1>Welcome, <%=current_user.username%></h1>
+
+  <h2>My Projects</2>
+
+  <%current_user.projects.each do |project|%>
+    <p><a href="/projects/<%=project.id%>"><h3><%=project.name%></h3></a></p>
+  <%end%>

@@ -1,0 +1,7 @@
+<h1><%=@category.name%></h1>
+
+  <% @category.projects.each do |project|%>
+    <ul>
+      <h2><li><a href="/projects/<%=project.id%>"><%= project.name %></a></li></h2>
+    </ul>
+  <% end %>

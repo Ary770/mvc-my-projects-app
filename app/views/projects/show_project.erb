@@ -1,6 +1,9 @@
-<h1><%=@project.name%> <% if @project.category %>
-  / <%= @project.category.name %>
-  <% end %> </h1>
+
+<% if @project.category %>
+  <h2><a href="/categories/<%=@project.category.id%>"><%= @project.category.name %></a></h2>
+<% end %>
+
+<h1><%=@project.name%></h1>
 
   <% if @project.ideas %>
     <h3>Ideas:</h3>
