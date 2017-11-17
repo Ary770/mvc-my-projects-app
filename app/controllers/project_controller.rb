@@ -4,6 +4,7 @@ class ProjectController < ApplicationController
     if logged_in?
       @user = current_user
       @projects = @user.projects
+      binding.pry
       # binding.pry
       erb :'projects/projects'
     else
@@ -27,7 +28,7 @@ class ProjectController < ApplicationController
         project = user.projects.build(params[:project])
         project.category = category
         params[:ideas].each do |idea|
-          project.ideas.build(text: idea)
+          project.ideas.build(text: idea) if idea != ""
         end
         user.save
 
@@ -79,7 +80,7 @@ class ProjectController < ApplicationController
     end
   end
 
-  delete  '/projects/:id/delete' do
+  delete '/projects/:id/delete' do
     project = Project.find(params[:id])
     user = current_user
     if user.projects.include?(project)
@@ -89,12 +90,6 @@ class ProjectController < ApplicationController
       redirect "/projects"
     end
   end
-
-
-
-
-
-
 
 
 end

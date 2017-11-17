@@ -5,7 +5,7 @@
 
 <h1><%=@project.name%></h1>
 
-  <% if @project.ideas %>
+  <% if @project.ideas != [] %>
     <h3>Ideas:</h3>
     <% @project.ideas.each do |i| %>
     <ul>
@@ -34,5 +34,8 @@
   <p></p>
 
   <a href="/projects/<%=@project.id%>/edit" class="btn btn-primary" role="botton">Edit Project</a>
-
-  <a href="/projects/<%=@project.id%>/delete" class="btn btn-danger" role="botton">Delete</a>
+  <p></p>
+  <form action="/projects/<%=@project.id%>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit"  class="btn btn-danger">Delete</button>
+  </form>
