@@ -4,8 +4,6 @@ class ProjectController < ApplicationController
     if logged_in?
       @user = current_user
       @projects = @user.projects
-      binding.pry
-      # binding.pry
       erb :'projects/projects'
     else
       redirect to '/login'
@@ -22,7 +20,7 @@ class ProjectController < ApplicationController
 
   post '/projects/new' do
     if logged_in? && current_user
-      if params[:name] != "" && params[:category]
+      if params[:name] != "" && params[:category] &&
         user = current_user
         category = Category.find_or_create_by(name: params[:category])
         project = user.projects.build(params[:project])
@@ -43,7 +41,7 @@ class ProjectController < ApplicationController
 
   get '/projects/:id' do
     if logged_in?
-      @project = Project.find(params[:id])
+      @project = current_user.projects.find(params[:id])
       erb :'projects/show_project'
     else
       redirect '/login'
@@ -52,7 +50,7 @@ class ProjectController < ApplicationController
 
   get '/projects/:id/edit' do
     if logged_in?
-      @project = Project.find(params[:id])
+      @project = current_user.projects.find(params[:id])
       erb :"projects/edit"
     else
       redirect '/login'
@@ -62,7 +60,7 @@ class ProjectController < ApplicationController
   patch '/projects/:id' do
     if logged_in? && current_user
       if params[:name] != "" && params[:category] != ""
-        project = Project.find(params[:id])
+        project = current_user.projects.find(params[:id])
         category = Category.find_or_create_by(name: params[:category])
         project.update(params[:project])
         project.category = category
@@ -81,7 +79,7 @@ class ProjectController < ApplicationController
   end
 
   delete '/projects/:id/delete' do
-    project = Project.find(params[:id])
+    project = current_user.projects.find(params[:id])
     user = current_user
     if user.projects.include?(project)
       project.delete

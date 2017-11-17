@@ -18,8 +18,7 @@
         <% if logged_in? %>
 
           <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="/">Home</a></li>
-            <li role="presentation"><a href="/projects">My Projects</a></li>
+            <li role="presentation" class="active"><a href="/projects">My Projects</a></li>
             <li role="presentation"><a href="/projects/new">Create New Project</a></li>
             <li role="presentation"><a href="/categories">Categories</a></li>
             <li role="presentation"><a href="/logout">Log Out</a></li>
@@ -28,6 +27,7 @@
         <% else %>
 
           <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="/">Home</a></li>
             <li role="presentation" class="active"><a href="/login">Log In</a>
             <li role="presentation"><a href="/signup">Sign Up</a>
           </ul>
