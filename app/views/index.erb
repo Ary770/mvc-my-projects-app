@@ -1,1 +1,16 @@
-<h1>Welcome To My Projects</h1>
+<div class="jumbotron">
+  <h2>Welcome To My Projects App!</h2>
+  <p>Everyone has projects in life...some more important than others...why not have them all on an app that will help you organize and keep track of them! Yes! Let’s do it...</p>
+  <% if logged_in? %>
+    <p><a class="btn btn-primary btn-lg" href="/projects/create_project" role="button">Create New Project</a></p>
+  <% else %>
+    <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Get Started</a></p>
+  <% end %>
+</div>
+
+<div class="container">
+  <h3>What are your personal, life fulfilling projects you want to accomplish?</h3>
+  <h3>...or just important stuff you need to get done...</h3>
+  <h3>let yourself be present, live the moment!</h3>
+  <h3>...let me worry about all the big (or little) things that need to get done!</h3>
+</div>
