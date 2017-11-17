@@ -1,4 +1,7 @@
 <h1>Sing Up:</h1>
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
+<% end %>
 <br>
 <form action="/signup" method="post">
   <div class="input-group">

@@ -23,8 +23,8 @@ class ApplicationController < Sinatra::Base
 			User.find(session[:user_id])
 		end
 
-    def validate_signup
-      !User.find_by(username: params[:username]) && params[:username] != ""
+    def validate_username
+      !User.find_by(username: params[:username])
     end
 	end
 

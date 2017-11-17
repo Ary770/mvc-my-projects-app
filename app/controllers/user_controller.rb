@@ -9,15 +9,17 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    if validate_signup
+    if validate_username
       user = User.new(params)
       if user.save
         session[:user_id] = user.id
         redirect "/projects"
       else
+        flash[:message] = "Ooops! Username and password fields cannot be empty."
         redirect "/signup"
       end
     else
+      flash[:message] = "Ooops. This username is already taken!"
       redirect "/signup"
     end
   end
