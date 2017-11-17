@@ -20,7 +20,7 @@ class ProjectController < ApplicationController
     if logged_in? && current_user
       if params[:name] != "" && params[:category] &&
         user = current_user
-        category = Category.find_or_create_by(name: params[:category])
+        category = user.categories.find_or_create_by(name: params[:category])
         project = user.projects.build(params[:project])
         project.category = category
         params[:ideas].each do |idea|
