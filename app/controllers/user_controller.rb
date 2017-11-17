@@ -37,6 +37,7 @@ class UserController < ApplicationController
 	    session[:user_id] = user.id
 	    redirect "/projects"
     else
+      flash[:message] = "Oh snap! Unable to locate user, please try again."
 	    redirect "/login"
     end
 	end

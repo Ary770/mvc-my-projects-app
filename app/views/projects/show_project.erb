@@ -1,3 +1,6 @@
+<% if flash.has?(:message) %>
+  <div class="alert alert-success" role="alert"><%=flash[:message]%></div>
+<% end %>
 
 <% if @project.category %>
   <h2><a href="/categories/<%=@project.category.id%>"><%= @project.category.name %></a></h2>

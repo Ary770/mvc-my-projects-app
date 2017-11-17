@@ -1,4 +1,7 @@
 <h1>Log In</h1>
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
+<% end %>
 <br>
 <form action="/login" method="post">
   <div class="input-group">

@@ -27,7 +27,7 @@ class ProjectController < ApplicationController
           project.ideas.build(text: idea) if idea != ""
         end
         user.save
-
+        flash[:message] = "Successfully created project."
         redirect "/projects/#{project.id}"
       else
         redirect '/projects/new'
