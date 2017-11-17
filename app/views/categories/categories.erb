@@ -1,5 +1,5 @@
 <h1>Categories</h1>
 
-  <% current_user.categories.each do |category| %>
+  <% @categories.each do |category| %>
     <h2><a href="/categories/<%=category.id%>"><%=category.name%></a></h2>
   <%end%>
