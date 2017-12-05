@@ -39,8 +39,11 @@ class ProjectController < ApplicationController
 
   get '/projects/:id' do
     if logged_in?
-      @project = current_user.projects.find(params[:id])
-      erb :'projects/show_project'
+      if @project = current_user.projects.find_by(id: params[:id])
+       erb :'projects/show_project'
+      else 
+        redirect '/projects'
+      end
     else
       redirect '/login'
     end
@@ -48,8 +51,11 @@ class ProjectController < ApplicationController
 
   get '/projects/:id/edit' do
     if logged_in?
-      @project = current_user.projects.find(params[:id])
-      erb :"projects/edit"
+      if @project = current_user.projects.find_by(id: params[:id])
+       erb :'projects/show_project'
+      else 
+        redirect '/projects'
+      end
     else
       redirect '/login'
     end
@@ -58,16 +64,22 @@ class ProjectController < ApplicationController
   patch '/projects/:id' do
     if logged_in? && current_user
       if params[:name] != "" && params[:category] != ""
-        project = current_user.projects.find(params[:id])
-        category = Category.find_or_create_by(name: params[:category])
-        project.update(params[:project])
-        project.category = category
-        project.ideas.clear
-        params[:ideas].each do |idea|
-          project.ideas.build(text: idea)
+        if project = current_user.projects.find_by(id: params[:id])
+          category = Category.find_or_create_by(name: params[:category])
+          project.update(params[:project])
+          project.category = category
+          project.ideas.clear
+          params[:ideas].each do |idea|
+            project.ideas.build(text: idea)
+          end
+          if project.save
+            redirect "/projects/#{project.id}"
+          else 
+            redirect "/projects/#{project.id}/edit"
+          end
+        else
+          redirect '/projects'
         end
-        project.save
-        redirect "/projects/#{project.id}"
       else
         redirect "/projects/#{params[:id]}/edit"
       end

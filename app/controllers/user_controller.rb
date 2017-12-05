@@ -52,5 +52,11 @@ class UserController < ApplicationController
       redirect "/"
     end
   end
+  
+  private
+  
+  def validate_username
+    !User.find_by(username: params[:username])
+  end
 
 end
