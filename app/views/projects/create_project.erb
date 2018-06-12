@@ -1,5 +1,9 @@
 <h1>New Project!</h1>
 
+<% if flash.has?(:message) %>
+  <div class="alert alert-danger" role="alert"><%=flash[:message]%></div>
+<% end %>
+
 <p>how exiting...</p>
 
 <form action="/projects/new" method="post">
@@ -27,7 +31,7 @@
   <div class="form-group">
     <input type="text" name="ideas[]" class="form-control" placeholder="">
   </div>
-  
+
   <!--<button id="js-more-ideas-button">More Ideas?</button>-->
 
     <h3>Notes</h3>
